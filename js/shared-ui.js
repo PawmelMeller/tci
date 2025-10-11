@@ -2,17 +2,26 @@
 // Wspólna obsługa modala, przycisku mailto i scrollowania sekcji
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Loading screen - hide after video loads
+  // Loading screen - hide after video loads and start video playback
   const loadingScreen = document.getElementById('loading-screen');
   const backgroundVideo = document.getElementById('background-video');
   if (loadingScreen && backgroundVideo) {
+    // Pause video initially (prevent autoplay before loader hides)
+    backgroundVideo.pause();
+    
     backgroundVideo.addEventListener('loadeddata', function() {
+      // Hide loading screen
       loadingScreen.style.opacity = '0';
       loadingScreen.style.transition = 'opacity 0.5s ease';
       setTimeout(() => {
         loadingScreen.style.display = 'none';
+        // Start video playback AFTER loader is hidden
+        backgroundVideo.play().catch(err => {
+          console.log('Video autoplay prevented:', err);
+        });
       }, 500);
     });
+    
     // Fallback - hide after 3 seconds if video doesn't load
     setTimeout(() => {
       if (loadingScreen.style.display !== 'none') {
@@ -20,6 +29,10 @@ document.addEventListener('DOMContentLoaded', function() {
         loadingScreen.style.transition = 'opacity 0.5s ease';
         setTimeout(() => {
           loadingScreen.style.display = 'none';
+          // Try to play video even if loading failed
+          backgroundVideo.play().catch(err => {
+            console.log('Video autoplay prevented:', err);
+          });
         }, 500);
       }
     }, 3000);
