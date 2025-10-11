@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Blokuj tylko katalogi IDE i system
+Disallow: /.git/
+Disallow: /.idea/
+Disallow: /.vscode/
+
+# Sitemap
+Sitemap: https://tcistolarstwowozniak.pl/sitemap.xml
