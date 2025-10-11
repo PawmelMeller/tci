@@ -2,6 +2,29 @@
 // Wspólna obsługa modala, przycisku mailto i scrollowania sekcji
 
 document.addEventListener('DOMContentLoaded', function() {
+  // Loading screen - hide after video loads
+  const loadingScreen = document.getElementById('loading-screen');
+  const backgroundVideo = document.getElementById('background-video');
+  if (loadingScreen && backgroundVideo) {
+    backgroundVideo.addEventListener('loadeddata', function() {
+      loadingScreen.style.opacity = '0';
+      loadingScreen.style.transition = 'opacity 0.5s ease';
+      setTimeout(() => {
+        loadingScreen.style.display = 'none';
+      }, 500);
+    });
+    // Fallback - hide after 3 seconds if video doesn't load
+    setTimeout(() => {
+      if (loadingScreen.style.display !== 'none') {
+        loadingScreen.style.opacity = '0';
+        loadingScreen.style.transition = 'opacity 0.5s ease';
+        setTimeout(() => {
+          loadingScreen.style.display = 'none';
+        }, 500);
+      }
+    }, 3000);
+  }
+
   // Obsługa przycisku Popros o wiecej informacji
   var btn = document.querySelector('button.btn-primary');
   if(btn) {
@@ -75,26 +98,5 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', updateNavBtns);
     window.addEventListener('resize', updateNavBtns);
     setTimeout(updateNavBtns, 400);
-
-    // Smooth scroll to next/prev section on wheel
-    let ticking = false;
-    window.addEventListener('wheel', function(e) {
-      if (ticking) return;
-      if (e.deltaY > 40) {
-        ticking = true;
-        const idx = getCurrentSectionIdx();
-        if (idx !== -1 && idx < allSections.length - 1) {
-          scrollToSection(idx + 1);
-        }
-        setTimeout(() => { ticking = false; }, 900);
-      } else if (e.deltaY < -40) {
-        ticking = true;
-        const idx = getCurrentSectionIdx();
-        if (idx > 0) {
-          scrollToSection(idx - 1);
-        }
-        setTimeout(() => { ticking = false; }, 900);
-      }
-    }, { passive: false });
   }
 });
