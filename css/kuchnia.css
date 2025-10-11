@@ -7,7 +7,7 @@ body {
 
 .hero-section {
     position: relative;
-    background-image: url('images/kuchnie/img.png');
+    background-image: url('../images/kuchnie/img.png');
     background-size: cover;
     background-position: center;
     height: 100vh;
