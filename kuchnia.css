@@ -1,0 +1,218 @@
+html { font-size: 100% !important; }
+
+body {
+    color: #fff;
+    background-color: #333;
+}
+
+.hero-section {
+    position: relative;
+    background-image: url('images/kuchnie/img.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 50px;
+    color: white;
+    z-index: 1; /* Ustawienie z-index, aby tekst był nad pseudo-elementem */
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0; 
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1); /* Przyciemnienie tła o 50% */
+    z-index: -1; /* Upewnij się, że pseudo-element jest poniżej tekstu */
+}
+
+.hero-section h1 {
+    font-size: 5rem;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+}
+
+.hero-section .lead {
+    font-size: 2rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.composition-info {
+    position: absolute;
+    right: 120px;
+    bottom: 5%;
+    text-align: left;
+    max-width: 350px;
+    z-index: 10; /* Zwiększamy wartość z-index, aby upewnić się, że tekst jest widoczny */
+}
+
+.composition-info {
+    padding: 10px;
+    border-radius: 5px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+
+}
+
+.composition-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    max-width: 400px; /* Zwiększenie szerokości tekstu */
+}
+
+.composition-title {
+    margin-bottom: 10px;
+}
+
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.subheading {
+    font-size: 1.2rem;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+
+.details-section img,
+.gallery-section img {
+    border-radius: 8px;
+}
+
+.footer {
+    background-color: #222;
+    color: #fff;
+}
+
+h1 {
+    font-size: 3rem; /* Zmniejsz rozmiar głównego nagłówka */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7); /* Dodanie cienia, aby wyróżnić tekst */
+}
+
+
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+p.lead {
+    font-size: 1.25rem; /* zmniejsz rozmiar tekstu pod nagłówkiem */
+}
+
+.gallery-section {
+    background-color: #25221a; /* ciemne tło */
+    color: #fff; /* tekst w kolorze białym */
+    padding: 80px 0; /* odstępy wewnętrzne */
+}
+
+.gallery-title {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.gallery-description {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #ddd; /* kolor tekstu trochę jaśniejszy niż biały */
+    margin-bottom: 20px;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; /* zaokrąglone rogi obrazka */
+}
+
+.row {
+    display: flex;
+    align-items: center; /* wyrównanie w pionie */
+}
+
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column; /* Układ pionowy na małych ekranach */
+    }
+
+    .gallery-title {
+        font-size: 2rem;
+    }
+
+    .gallery-description {
+        font-size: 1.2rem;
+    }
+}
+
+
+.hero-section {
+    padding: 60px 0; /* większy odstęp dla sekcji z głównym nagłówkiem */
+}
+
+.btn-primary {
+    background-color: #666;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #888;
+}
+
+/* --- MODERN LOOK FOR .details-section IN COLLECTION PAGES --- */
+.details-section.moderno-bg, .details-section.pienza-bg, .details-section.darkglow-bg, .details-section.pienza22-bg {
+  background: linear-gradient(120deg, #232323 0%, #232526 60%, #18191a 100%);
+  border-radius: 22px;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.22);
+  margin: 48px 0 48px 0;
+  padding: 56px 0 56px 0;
+  position: relative;
+  overflow: hidden;
+}
+.details-section .row {
+  align-items: center;
+}
+.details-section h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff;
+  margin-bottom: 18px;
+  text-shadow: 0 2px 12px #000a;
+}
+.details-section p {
+  color: #e0e0e0;
+  font-size: 1.18rem;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+.details-section img {
+  border-radius: 16px;
+  box-shadow: 0 4px 32px #000a, 0 2px 12px #0006;
+  transition: transform 0.3s cubic-bezier(.4,1.7,.7,1.01), box-shadow 0.25s;
+}
+.details-section img:hover {
+  transform: scale(1.035);
+  box-shadow: 0 8px 40px #000c;
+}
+@media (max-width: 900px) {
+  .details-section.moderno-bg, .details-section.pienza-bg, .details-section.darkglow-bg, .details-section.pienza22-bg {
+    padding: 32px 0 32px 0;
+    border-radius: 12px;
+  }
+  .details-section img {
+    margin-top: 24px;
+  }
+}

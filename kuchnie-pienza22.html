@@ -1,0 +1,111 @@
+/* --- MODAL IMAGE NEW SYSTEM --- */
+        .img-modal-new {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: fixed;
+          left: 0; top: 0; width: 100vw; height: 100vh;
+          background: rgba(0,0,0,0.85);
+          z-index: 9999;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.35s cubic-bezier(.4,0,.2,1);
+        }
+        .img-modal-new.open {
+          opacity: 1;
+          pointer-events: auto;
+        }
+        .img-modal-new img {
+          max-width: 92vw;
+          max-height: 92vh;
+          border-radius: 18px;
+          box-shadow: 0 0 40px #000a, 0 8px 32px #0008;
+          transform: scale(0.92) translateY(40px);
+          opacity: 0;
+          transition: opacity 0.35s 0.05s, transform 0.35s 0.05s;
+          cursor: zoom-in;
+        }
+        .img-modal-new.open img {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+        .img-modal-new img.zoomed {
+          cursor: zoom-out;
+          transition: transform 0.4s cubic-bezier(.4,0,.2,1), opacity 0.35s 0.05s;
+          transform: scale(2.1) translateY(0) !important;
+          z-index: 10002;
+        }
+        .img-modal-new .close-modal-new {
+          position: absolute;
+          top: 32px;
+          right: 48px;
+          font-size: 2.7rem;
+          color: #fff;
+          cursor: pointer;
+          z-index: 10001;
+          background: none;
+          border: none;
+          transition: color 0.2s;
+        }
+        .img-modal-new .close-modal-new:hover {
+          color: #c0a965;
+        }
+        .img-fluid { cursor: zoom-in; }
+
+        <!-- Modal for image preview (NEW SYSTEM) -->
+    <div class="img-modal-new" id="imgModalNew">
+      <button class="close-modal-new" id="closeModalNew" aria-label="Zamknij">&times;</button>
+      <img id="modalImgNew" src="" alt="Podgląd zdjęcia">
+    </div>
+    <!-- ...existing code... -->
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+<script>
+// --- NEW MODAL SYSTEM ---
+(function() {
+  const galleryImgs = Array.from(document.querySelectorAll('.img-fluid'));
+  const modal = document.getElementById('imgModalNew');
+  const modalImg = document.getElementById('modalImgNew');
+  const closeBtn = document.getElementById('closeModalNew');
+
+  function openModal(src) {
+    modalImg.src = src;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    modalImg.classList.remove('zoomed');
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => { modalImg.src = ''; modalImg.classList.remove('zoomed'); }, 350);
+  }
+
+  galleryImgs.forEach(img => {
+    img.addEventListener('click', function(e) {
+      e.preventDefault();
+      openModal(img.src);
+    });
+  });
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (modal.classList.contains('open')) {
+      if (e.key === 'Escape') closeModal();
+    }
+  });
+  // ZOOM funkcja: kliknięcie w zdjęcie powiększa/zmniejsza
+  modalImg.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (!modalImg.classList.contains('zoomed')) {
+      modalImg.classList.add('zoomed');
+    } else {
+      modalImg.classList.remove('zoomed');
+    }
+  });
+})();
+</script>
+</body>
+</html>

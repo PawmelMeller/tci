@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Kuchnie na wymiar Legionowo – Dark Glow | Stolarz Legionowo</title>
+    <meta name="description" content="Nowoczesne kuchnie na wymiar Dark Glow – projekt i realizacja w Legionowie. Stolarz na zamówienie, meble kuchenne, zabudowy. Zobacz realizacje!">
+    <meta name="keywords" content="kuchnie na wymiar Legionowo, stolarz Legionowo, nowoczesne kuchnie Legionowo, meble na wymiar Legionowo, Dark Glow Legionowo, kuchnie Legionowo, stolarz na zamówienie Legionowo">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Antic+Didone&display=swap" rel="stylesheet">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="cover.css" rel="stylesheet">
+    <link href="kuchnia.css" rel="stylesheet">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Tomasz Woźniak">
+    <meta property="og:title" content="Tomestic - Meble na wymiar Legionowo">
+    <meta property="og:description" content="Nowoczesne kuchnie i meble na wymiar. Modern Classic, Pienza, Dark Glow, Moderno. Realizacje i kontakt. Legionowo i okolice.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://Tcistolarstwowozniak.pl/kuchnie4-dark-glow.html">
+    <meta property="og:image" content="https://Tcistolarstwowozniak.pl/images/kuchnie/img_1.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tomestic - Meble na wymiar Legionowo">
+    <meta name="twitter:description" content="Nowoczesne kuchnie i meble na wymiar. Modern Classic, Pienza, Dark Glow, Moderno. Realizacje i kontakt. Legionowo i okolice.">
+    <meta name="twitter:image" content="https://Tcistolarstwowozniak.pl/images/kuchnie/img_1.png">
+    <link rel="canonical" href="https://Tcistolarstwowozniak.pl/kuchnie4-dark-glow.html">
+    <style>
+        body {
+  background: linear-gradient(135deg, #232526 0%, #414345 100%);
+}
+        .hero-section.darkglow-bg {
+            background: url('images/kuchnie 4 dark glow/Modern Dining and Kitchen Showcase.png') !important;
+            background-size: cover;
+            background-position: center;
+            color: #fff !important;
+        }
+        .hero-section.darkglow-bg h1,
+        .hero-section.darkglow-bg h2,
+        .hero-section.darkglow-bg p,
+        .hero-section.darkglow-bg .subheading {
+            color: #fff !important;
+            text-shadow: 0 2px 8px #000, 0 1px 0 #000;
+        }
+        .gallery-section.darkglow-bg {
+            background: linear-gradient(120deg, #3a2e2a 0%, #232323 100%);
+        }
+        .details-section.darkglow-bg {
+            background: linear-gradient(120deg, #232323 0%, #3a2e2a 100%);
+        }
+        .product-info.darkglow-bg {
+            background: linear-gradient(120deg, #3a2e2a 0%, #232323 100%);
+        }
+        /* --- MODAL IMAGE NEW SYSTEM --- */
+        .img-modal-new {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: fixed;
+          left: 0; top: 0; width: 100vw; height: 100vh;
+          background: rgba(0,0,0,0.85);
+          z-index: 9999;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.35s cubic-bezier(.4,0,.2,1);
+        }
+        .img-modal-new.open {
+          opacity: 1;
+          pointer-events: auto;
+        }
+        .img-modal-new img {
+          max-width: 92vw;
+          max-height: 92vh;
+          border-radius: 18px;
+          box-shadow: 0 0 40px #000a, 0 8px 32px #0008;
+          transform: scale(0.92) translateY(40px);
+          opacity: 0;
+          transition: opacity 0.35s 0.05s, transform 0.35s 0.05s;
+          cursor: zoom-in;
+        }
+        .img-modal-new.open img {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+        .img-modal-new img.zoomed {
+          cursor: zoom-out;
+          transition: transform 0.4s cubic-bezier(.4,0,.2,1), opacity 0.35s 0.05s;
+          transform: scale(2.1) translateY(0) !important;
+          z-index: 10002;
+        }
+        .img-modal-new .close-modal-new {
+          position: absolute;
+          top: 32px;
+          right: 48px;
+          font-size: 2.7rem;
+          color: #fff;
+          cursor: pointer;
+          z-index: 10001;
+          background: none;
+          border: none;
+          transition: color 0.2s;
+        }
+        .img-modal-new .close-modal-new:hover {
+          color: #c0a965;
+        }
+        .img-fluid { cursor: zoom-in; }
+        .mail-link {
+  color: #c0a965;
+}
+.scroll-next-section-btn, .scroll-prev-section-btn {
+  display: none !important;
+}
+.scroll-nav-btn {
+  position: fixed;
+  right: 32px;
+  z-index: 2000;
+  background: rgba(0,0,0,0.7);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 12px #0006;
+  transition: background 0.2s, color 0.2s, opacity 0.2s;
+  opacity: 0.85;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.scroll-nav-btn[hidden] { display: none !important; }
+.scroll-nav-btn:hover {
+  background: #c0a965;
+  color: #232323;
+  opacity: 1;
+}
+#scrollDownBtn { bottom: 32px; }
+#scrollUpBtn { bottom: 92px; }
+    </style>
+</head>
+<body>
+<section class="hero-section darkglow-bg">
+    <div class="container">
+        <h2 class="subheading">Kuchnie</h2>
+        <h1 class="display-4">Loft</h1>
+        <p class="lead">Ciemne akcenty, nowoczesny blask</p>
+        <div class="composition-info">
+            <p class="composition-title">KOMPOZYCJA</p>
+            <p class="composition-text">Kolekcja Dark Glow to propozycja dla osob ceniacych wyraziste, ciemne barwy i nowoczesny styl. Polaczenie matowych powierzchni z subtelnym oswietleniem tworzy niepowtarzalny klimat kuchni.</p>
+        </div>
+    </div>
+</section>
+<section class="gallery-section py-5 text-light darkglow-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img alt="Dark Glow 1" class="img-fluid rounded" src="images/kuchnie 4 dark glow/Modern Dining and Kitchen Showcase.png">
+            </div>
+            <div class="col-md-6">
+                <h2 class="gallery-title">Nowoczesna Przestrzen</h2>
+                <p class="gallery-description">Ciemne fronty i eleganckie wykonczenia podkreslaja nowoczesny charakter kuchni, a przemyslane oswietlenie nadaje jej wyjatkowego blasku.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="details-section py-5 darkglow-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="h1">Minimalizm i Styl</h2>
+                <p>Proste formy i wyraziste linie to znak rozpoznawczy kolekcji Dark Glow. Kuchnia ta laczy funkcjonalnosc z designerskim wygladem.</p>
+            </div>
+            <div class="col-md-6">
+                <img alt="nowoczesna kuchnia Dark Glow Legionowo" class="img-fluid" src="images/kuchnie 4 dark glow/Modern Kitchen and Dining Elegance.png">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="gallery-section py-5 text-light darkglow-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img alt="Dark Glow 3" class="img-fluid" src="images/kuchnie 4 dark glow/Modern Minimalist Dining & Kitchenette Design.png">
+            </div>
+            <div class="col-md-6 d-flex flex-column justify-content-center">
+                <h2>Wyjatkowe Detale</h2>
+                <p>Subtelne detale, takie jak podświetlane półki czy kontrastujące materiały, nadają kuchni Dark Glow niepowtarzalnego charakteru.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="details-section py-5 darkglow-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Przestrzen dla Wymagajacych</h2>
+                <p>Kuchnia Dark Glow to idealne miejsce dla osob, ktore cenia sobie nowoczesnosc, wygode i niebanalny styl. Przemyslana organizacja przestrzeni ulatwia codzienne funkcjonowanie.</p>
+            </div>
+            <div class="col-md-6">
+                <img alt="Dark Glow 4" class="img-fluid" src="images/kuchnie 4 dark glow/Sleek Modern Dining Composition.png">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="product-info py-5 darkglow-bg">
+    <div class="container text-center">
+        <h2>Zapytanie o Informacje</h2>
+        <p>Skontaktuj sie z nami, aby uzyskac wiecej informacji o kolekcji Dark Glow</p>
+        <button class="btn btn-primary">Popros o wiecej informacji</button>
+    </div>
+</section>
+<div class="container contact-container d-flex justify-content-center align-items-center" id="kontakt">
+        <div class="row w-100 justify-content-center">
+            <div class="col-md-6 text-center">
+                <h2>Kontakt</h2>
+                <div class="contact-info mt-4">
+                    <p><i class="bi bi-house-door"></i> Łajski, ul. Kościelna 26<br> 05-119 Legionowo</p>
+                    <p><i class="bi bi-envelope"></i> <a href="mailto:tomestic@gmail.com" class="mail-link">tomestic@gmail.com</a></p>
+                    <p><i class="bi bi-telephone"></i> +48 600 820 415</p>
+                </div>
+                <div class="footer">
+                    <p>&copy; 2024 Tomasz Woźniak</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal for image preview (NEW SYSTEM) -->
+    <div class="img-modal-new" id="imgModalNew">
+      <button class="close-modal-new" id="closeModalNew" aria-label="Zamknij">&times;</button>
+      <img id="modalImgNew" src="" alt="Podgląd zdjęcia">
+    </div>
+    <!-- Scroll navigation buttons -->
+<button id="scrollUpBtn" class="scroll-nav-btn" title="Przewiń do góry" hidden><i class="bi bi-chevron-double-up"></i></button>
+<button id="scrollDownBtn" class="scroll-nav-btn" title="Przewiń w dół" hidden><i class="bi bi-chevron-double-down"></i></button>
+<script src="shared-ui.js"></script>
+<script>
+// --- NEW MODAL SYSTEM ---
+(function() {
+  const galleryImgs = Array.from(document.querySelectorAll('.img-fluid'));
+  const modal = document.getElementById('imgModalNew');
+  const modalImg = document.getElementById('modalImgNew');
+  const closeBtn = document.getElementById('closeModalNew');
+
+  function openModal(src) {
+    modalImg.src = src;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    modalImg.classList.remove('zoomed');
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => { modalImg.src = ''; modalImg.classList.remove('zoomed'); }, 350);
+  }
+
+  galleryImgs.forEach(img => {
+    img.addEventListener('click', function(e) {
+      e.preventDefault();
+      openModal(img.src);
+    });
+  });
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (modal.classList.contains('open')) {
+      if (e.key === 'Escape') closeModal();
+    }
+  });
+  // ZOOM funkcja: kliknięcie w zdjęcie powiększa/zmniejsza
+  modalImg.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (!modalImg.classList.contains('zoomed')) {
+      modalImg.classList.add('zoomed');
+    } else {
+      modalImg.classList.remove('zoomed');
+    }
+  });
+})();
+</script>
+</body>
+</html>

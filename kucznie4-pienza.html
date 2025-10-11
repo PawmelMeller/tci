@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Kuchnie klasyczne Legionowo – Pienza | Stolarz Legionowo</title>
+    <meta name="description" content="Kuchnie klasyczne Pienza na wymiar w Legionowie. Stolarz na zamówienie, meble kuchenne, zabudowy. Zobacz realizacje!">
+    <meta name="keywords" content="kuchnie klasyczne Legionowo, kuchnie na wymiar Legionowo, stolarz Legionowo, meble na wymiar Legionowo, Pienza Legionowo, kuchnie Legionowo, stolarz na zamówienie Legionowo">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Antic+Didone&display=swap" rel="stylesheet">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="cover.css" rel="stylesheet">
+    <link href="kuchnia.css" rel="stylesheet">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Tomasz Woźniak">
+    <meta property="og:title" content="Tomestic - Meble na wymiar Legionowo">
+    <meta property="og:description" content="Nowoczesne kuchnie i meble na wymiar. Modern Classic, Pienza, Dark Glow, Moderno. Realizacje i kontakt. Legionowo i okolice.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://Tcistolarstwowozniak.pl/kucznie4-pienza.html">
+    <meta property="og:image" content="https://Tcistolarstwowozniak.pl/images/kuchnie/img_1.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tomestic - Meble na wymiar Legionowo">
+    <meta name="twitter:description" content="Nowoczesne kuchnie i meble na wymiar. Modern Classic, Pienza, Dark Glow, Moderno. Realizacje i kontakt. Legionowo i okolice.">
+    <meta name="twitter:image" content="https://Tcistolarstwowozniak.pl/images/kuchnie/img_1.png">
+    <link rel="canonical" href="https://Tcistolarstwowozniak.pl/kucznie4-pienza.html">
+    <style>
+        body {
+  background: linear-gradient(135deg, #232526 0%, #414345 100%);
+}
+        .hero-section.pienza-bg {
+            background-image: url('images/kucznie 4 - pienza/Elegant Classic Kitchen with Marble Island.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff !important;
+        }
+        .hero-section.pienza-bg h1,
+        .hero-section.pienza-bg h2,
+        .hero-section.pienza-bg p,
+        .hero-section.pienza-bg .subheading {
+            color: #fff !important;
+            text-shadow: 0 2px 8px #000, 0 1px 0 #000;
+        }
+        .gallery-section.pienza-bg,
+        .details-section.pienza-bg,
+        .product-info.pienza-bg {
+            background: linear-gradient(120deg, #232323 0%, #3a2e2a 100%);
+            color: #fff;
+        }
+        .mail-link {
+  color: #c0a965;
+}
+.scroll-next-section-btn, .scroll-prev-section-btn {
+  display: none !important;
+}
+.scroll-nav-btn {
+  position: fixed;
+  right: 32px;
+  z-index: 2000;
+  background: rgba(0,0,0,0.7);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 12px #0006;
+  transition: background 0.2s, color 0.2s, opacity 0.2s;
+  opacity: 0.85;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.scroll-nav-btn[hidden] { display: none !important; }
+.scroll-nav-btn:hover {
+  background: #c0a965;
+  color: #232323;
+  opacity: 1;
+}
+#scrollDownBtn { bottom: 32px; }
+#scrollUpBtn { bottom: 92px; }
+        /* --- MODAL IMAGE NEW SYSTEM --- */
+        .img-modal-new {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: fixed;
+          left: 0; top: 0; width: 100vw; height: 100vh;
+          background: rgba(0,0,0,0.85);
+          z-index: 9999;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.35s cubic-bezier(.4,0,.2,1);
+        }
+        .img-modal-new.open {
+          opacity: 1;
+          pointer-events: auto;
+        }
+        .img-modal-new img {
+          max-width: 92vw;
+          max-height: 92vh;
+          border-radius: 18px;
+          box-shadow: 0 0 40px #000a, 0 8px 32px #0008;
+          transform: scale(0.92) translateY(40px);
+          opacity: 0;
+          transition: opacity 0.35s 0.05s, transform 0.35s 0.05s;
+          cursor: zoom-in;
+        }
+        .img-modal-new.open img {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+        .img-modal-new img.zoomed {
+          cursor: zoom-out;
+          transition: transform 0.4s cubic-bezier(.4,0,.2,1), opacity 0.35s 0.05s;
+          transform: scale(2.1) translateY(0) !important;
+          z-index: 10002;
+        }
+        .img-modal-new .close-modal-new {
+          position: absolute;
+          top: 32px;
+          right: 48px;
+          font-size: 2.7rem;
+          color: #fff;
+          cursor: pointer;
+          z-index: 10001;
+          background: none;
+          border: none;
+          transition: color 0.2s;
+        }
+        .img-modal-new .close-modal-new:hover {
+          color: #c0a965;
+        }
+        .img-fluid { cursor: zoom-in; }
+    </style>
+</head>
+<body>
+<section class="hero-section pienza-bg">
+    <div class="container">
+        <h2 class="subheading">Kuchnie</h2>
+        <h1 class="display-4">Pienza – Klasyka w Nowoczesnym Wydaniu</h1>
+        <p class="lead">Elegancja, tradycja, cieplo</p>
+        <div class="composition-info">
+            <p class="composition-title">KOMPOZYCJA</p>
+            <p class="composition-text">Kolekcja Pienza to polaczenie klasycznych form z nowoczesnymi detalami. Jasne kolory, marmurowe blaty i eleganckie wykonczenia tworza kuchnie pelna ciepla i stylu.</p>
+        </div>
+    </div>
+</section>
+<section class="gallery-section py-5 text-light pienza-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img alt="kuchnia klasyczna Pienza Legionowo" class="img-fluid rounded" src="images/kucznie 4 - pienza/Elegant Classic Kitchen with Marble Island.png">
+            </div>
+            <div class="col-md-6">
+                <h2 class="gallery-title">Klasyczna Wyspa</h2>
+                <p class="gallery-description">Centralna wyspa z marmurowym blatem to serce kuchni Pienza. Laczy funkcjonalnosc z ponadczasowa elegancja.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="details-section py-5 pienza-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Detale i Wykonczenia</h2>
+                <p>Wyjatkowe detale, takie jak ozdobne uchwyty czy klasyczne frezy, nadaja kuchni Pienza niepowtarzalnego charakteru i podkreslaja jej luksusowy styl.</p>
+            </div>
+            <div class="col-md-6">
+                <img alt="Pienza 2" class="img-fluid" src="images/kucznie 4 - pienza/Elegant Cream Kitchen Island Details.png">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="gallery-section py-5 text-light pienza-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img alt="Pienza 3" class="img-fluid" src="images/kucznie 4 - pienza/Elegant Daylight Kitchen and Dining.png">
+            </div>
+            <div class="col-md-6 d-flex flex-column justify-content-center">
+                <h2>Przestrzen i Swiatlo</h2>
+                <p>Duze okna i jasne kolory sprawiaja, ze kuchnia Pienza jest pelna swiatla i przyjaznej atmosfery.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="details-section py-5 pienza-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Wyjatkowa Atmosfera</h2>
+                <p>Kuchnia Pienza to miejsce, gdzie tradycja spotyka sie z nowoczesnoscia. Cieple akcenty i eleganckie dodatki tworza przestrzen idealna do rodzinnych spotkan.</p>
+            </div>
+            <div class="col-md-6">
+                <img alt="Pienza 4" class="img-fluid" src="images/kucznie 4 - pienza/Elegant Dining Space with Chandelier.png">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="product-info py-5 pienza-bg">
+    <div class="container text-center">
+        <h2>Zapytanie o Informacje</h2>
+        <p>Skontaktuj sie z nami, aby uzyskac wiecej informacji o kolekcji Pienza</p>
+        <button class="btn btn-primary">Popros o wiecej informacji</button>
+    </div>
+</section>
+<div class="container contact-container d-flex justify-content-center align-items-center" id="kontakt">
+        <div class="row w-100 justify-content-center">
+            <div class="col-md-6 text-center">
+                <h2>Kontakt</h2>
+                <div class="contact-info mt-4">
+                    <p><i class="bi bi-house-door"></i> Łajski, ul. Kościelna 26<br> 05-119 Legionowo</p>
+                    <p><i class="bi bi-envelope"></i> <a href="mailto:tomestic@gmail.com" class="mail-link">tomestic@gmail.com</a></p>
+                    <p><i class="bi bi-telephone"></i> +48 600 820 415</p>
+                </div>
+                <div class="footer">
+                    <p>&copy; 2024 Tomasz Woźniak</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal for image preview (NEW SYSTEM) -->
+    <div class="img-modal-new" id="imgModalNew">
+      <button class="close-modal-new" id="closeModalNew" aria-label="Zamknij">&times;</button>
+      <img id="modalImgNew" src="" alt="Podgląd zdjęcia">
+    </div>
+    <!-- Scroll navigation buttons -->
+<button id="scrollUpBtn" class="scroll-nav-btn" title="Przewiń do góry" hidden><i class="bi bi-chevron-double-up"></i></button>
+<button id="scrollDownBtn" class="scroll-nav-btn" title="Przewiń w dół" hidden><i class="bi bi-chevron-double-down"></i></button>
+<script src="shared-ui.js"></script>
+<script>
+// --- NEW MODAL SYSTEM ---
+(function() {
+  const galleryImgs = Array.from(document.querySelectorAll('.img-fluid'));
+  const modal = document.getElementById('imgModalNew');
+  const modalImg = document.getElementById('modalImgNew');
+  const closeBtn = document.getElementById('closeModalNew');
+
+  function openModal(src) {
+    modalImg.src = src;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    modalImg.classList.remove('zoomed');
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => { modalImg.src = ''; modalImg.classList.remove('zoomed'); }, 350);
+  }
+
+  galleryImgs.forEach(img => {
+    img.addEventListener('click', function(e) {
+      e.preventDefault();
+      openModal(img.src);
+    });
+  });
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (modal.classList.contains('open')) {
+      if (e.key === 'Escape') closeModal();
+    }
+  });
+  // ZOOM funkcja: kliknięcie w zdjęcie powiększa/zmniejsza
+  modalImg.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (!modalImg.classList.contains('zoomed')) {
+      modalImg.classList.add('zoomed');
+    } else {
+      modalImg.classList.remove('zoomed');
+    }
+  });
+})();
+</script>
+</body>
+</html>
