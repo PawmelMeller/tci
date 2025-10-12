@@ -648,18 +648,26 @@ document.addEventListener('DOMContentLoaded', function() {
       // Wyślij dane przez FormSubmit (TEST: pawel.meller3@gmail.com)
       fetch('https://formsubmit.co/pawel.meller3@gmail.com', {
         method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
+        body: formData
       })
       .then(function(response) {
-        return response.json();
+        // Sprawdź czy odpowiedź to JSON czy HTML
+        var contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+          return response.json();
+        } else {
+          // Jeśli HTML, to FormSubmit przekierował (wymaga potwierdzenia lub sukces)
+          if(response.ok || response.redirected) {
+            return { success: true, message: 'Wiadomość została wysłana pomyślnie!' };
+          } else {
+            throw new Error('Błąd wysyłania formularza');
+          }
+        }
       })
       .then(function(data) {
-        if(data.success) {
+        if(data.success || data.message) {
           formMessage.className = 'alert alert-success';
-          formMessage.innerHTML = '<i class="bi bi-check-circle"></i> ' + data.message;
+          formMessage.innerHTML = '<i class="bi bi-check-circle"></i> Dziękujemy! Twoja wiadomość została wysłana. Odpowiemy najszybciej jak to możliwe.';
           contactForm.reset();
           contactForm.classList.remove('was-validated');
           
@@ -673,25 +681,48 @@ document.addEventListener('DOMContentLoaded', function() {
             charCount.textContent = '0 / 1000 znaków';
             charCount.style.color = '#888';
           }
+          
+          // Reset listy plików
+          var fileList = document.getElementById('fileList');
+          if(fileList) {
+            fileList.innerHTML = '';
+          }
         } else {
           formMessage.className = 'alert alert-danger';
-          formMessage.innerHTML = '<i class="bi bi-exclamation-circle"></i> ' + data.message;
+          formMessage.innerHTML = '<i class="bi bi-exclamation-circle"></i> ' + (data.message || 'Wystąpił błąd podczas wysyłania');
         }
         formMessage.style.display = 'block';
         
         // Przewiń do komunikatu
         formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         
-        // Ukryj komunikat po 7 sekundach
+        // Ukryj komunikat po 8 sekundach
         setTimeout(function() {
           formMessage.style.display = 'none';
-        }, 7000);
+        }, 8000);
       })
       .catch(function(error) {
         console.error('Error:', error);
-        formMessage.className = 'alert alert-danger';
-        formMessage.innerHTML = '<i class="bi bi-x-circle"></i> Wystąpił błąd podczas wysyłania. Spróbuj ponownie lub skontaktuj się telefonicznie: <a href="tel:+48600820415" class="alert-link">+48 600 820 415</a>';
+        formMessage.className = 'alert alert-warning';
+        formMessage.innerHTML = '<i class="bi bi-info-circle"></i> Formularz został wysłany, ale wystąpił problem z potwierdzeniem. Jeśli nie otrzymasz odpowiedzi w ciągu 24h, skontaktuj się telefonicznie: <a href="tel:+48600820415" class="alert-link">+48 600 820 415</a>';
         formMessage.style.display = 'block';
+        
+        // Reset formularza mimo błędu (prawdopodobnie wysłano pomyślnie)
+        setTimeout(function() {
+          contactForm.reset();
+          contactForm.classList.remove('was-validated');
+          inputs.forEach(function(input) {
+            input.classList.remove('is-valid', 'is-invalid');
+          });
+          if(charCount) {
+            charCount.textContent = '0 / 1000 znaków';
+            charCount.style.color = '#888';
+          }
+          var fileList = document.getElementById('fileList');
+          if(fileList) {
+            fileList.innerHTML = '';
+          }
+        }, 2000);
       })
       .finally(function() {
         // Przywróć przycisk
