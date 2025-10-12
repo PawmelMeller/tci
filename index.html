@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data: https:; media-src 'self'; connect-src 'self' https://cdn.jsdelivr.net https://formsubmit.co;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data: https:; media-src 'self'; connect-src 'self' https://cdn.jsdelivr.net;">
     <meta content="Stolarz Legionowo - kuchnie na wymiar i meble na wymiar Legionowo. Meble kuchenne, loftowe, na zamówienie. Realizacje stolarskie Modern Classic, Pienza, Loft. Tomestic Creative Interior." name="description">
     <meta content="Tomasz Woźniak" name="author">
     <meta content="Tomestic Creative Interior" name="copyright">
@@ -355,9 +355,6 @@
                 <h2 class="text-center">Napisz do nas</h2>
                 <form id="contactForm" class="mt-4" novalidate>
                     
-                    <!-- Honeypot field (ukryte przed użytkownikami, widoczne dla botów) -->
-                    <input type="text" name="website" id="website" style="position: absolute; left: -9999px;" tabindex="-1" autocomplete="off">
-                    
                     <div class="mb-3">
                         <label for="subject" class="form-label">
                             <i class="bi bi-tag"></i> Temat zapytania
@@ -643,92 +640,83 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Wyłącz przycisk podczas wysyłania
       submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Wysyłanie...';
+      submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Otwieranie programu pocztowego...';
       
-      // Wyślij dane przez FormSubmit (TEST: pawel.meller3@gmail.com)
-      fetch('https://formsubmit.co/pawel.meller3@gmail.com', {
-        method: 'POST',
-        body: formData
-      })
-      .then(function(response) {
-        // Sprawdź czy odpowiedź to JSON czy HTML
-        var contentType = response.headers.get('content-type');
-        if (contentType && contentType.includes('application/json')) {
-          return response.json();
-        } else {
-          // Jeśli HTML, to FormSubmit przekierował (wymaga potwierdzenia lub sukces)
-          if(response.ok || response.redirected) {
-            return { success: true, message: 'Wiadomość została wysłana pomyślnie!' };
-          } else {
-            throw new Error('Błąd wysyłania formularza');
-          }
+      // Przygotuj dane
+      var subjectMap = {
+        'kuchnia-wymiar': 'Kuchnia na wymiar',
+        'meble-loftowe': 'Meble loftowe',
+        'modern-classic': 'Modern Classic',
+        'pienza': 'Pienza',
+        'prowansja': 'Prowansja',
+        'dark-glow': 'Dark Glow',
+        'zabudowa': 'Zabudowa kuchenna',
+        'szafy': 'Szafy na wymiar',
+        'konsultacja': 'Konsultacja projektowa',
+        'wycena': 'Prośba o wycenę',
+        'inne': 'Inne'
+      };
+      
+      var selectedSubject = document.getElementById('subject').value;
+      var subjectText = subjectMap[selectedSubject] || 'Nowe zapytanie';
+      var nameValue = document.getElementById('name').value;
+      var emailValue = document.getElementById('email').value;
+      var phoneValue = document.getElementById('phone').value || 'Nie podano';
+      var messageValue = document.getElementById('message').value;
+      
+      // Informacja o załącznikach
+      var attachmentsInfo = '';
+      if(attachmentInput && attachmentInput.files.length > 0) {
+        attachmentsInfo = '\n\nZałączniki (' + attachmentInput.files.length + '):\n';
+        for(var i = 0; i < attachmentInput.files.length; i++) {
+          var fileSize = (attachmentInput.files[i].size / 1024 / 1024).toFixed(2);
+          attachmentsInfo += '- ' + attachmentInput.files[i].name + ' (' + fileSize + ' MB)\n';
         }
-      })
-      .then(function(data) {
-        if(data.success || data.message) {
-          formMessage.className = 'alert alert-success';
-          formMessage.innerHTML = '<i class="bi bi-check-circle"></i> Dziękujemy! Twoja wiadomość została wysłana. Odpowiemy najszybciej jak to możliwe.';
-          contactForm.reset();
-          contactForm.classList.remove('was-validated');
-          
-          // Reset walidacji wizualnej
-          inputs.forEach(function(input) {
-            input.classList.remove('is-valid', 'is-invalid');
-          });
-          
-          // Reset licznika znaków
-          if(charCount) {
-            charCount.textContent = '0 / 1000 znaków';
-            charCount.style.color = '#888';
-          }
-          
-          // Reset listy plików
-          var fileList = document.getElementById('fileList');
-          if(fileList) {
-            fileList.innerHTML = '';
-          }
-        } else {
-          formMessage.className = 'alert alert-danger';
-          formMessage.innerHTML = '<i class="bi bi-exclamation-circle"></i> ' + (data.message || 'Wystąpił błąd podczas wysyłania');
-        }
+        attachmentsInfo += '\n(Proszę załączyć te pliki ręcznie do emaila)';
+      }
+      
+      // Buduj mailto link
+      var mailtoLink = 'mailto:pawel.meller3@gmail.com' +
+        '?subject=' + encodeURIComponent('[' + subjectText + '] Wiadomość od: ' + nameValue) +
+        '&body=' + encodeURIComponent(
+          'Temat zapytania: ' + subjectText + '\n' +
+          'Imię i nazwisko: ' + nameValue + '\n' +
+          'Email: ' + emailValue + '\n' +
+          'Telefon: ' + phoneValue + '\n\n' +
+          'Wiadomość:\n' + messageValue +
+          attachmentsInfo
+        );
+      
+      // Otwórz program pocztowy
+      window.location.href = mailtoLink;
+      
+      // Symuluj sukces
+      setTimeout(function() {
+        formMessage.className = 'alert alert-success';
+        formMessage.innerHTML = '<i class="bi bi-check-circle"></i> Program pocztowy został otwarty. Proszę wysłać wiadomość z programu pocztowego.' + 
+          (attachmentInput && attachmentInput.files.length > 0 ? '<br><strong>Pamiętaj załączyć pliki ręcznie!</strong>' : '');
         formMessage.style.display = 'block';
         
-        // Przewiń do komunikatu
-        formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        // Reset formularza
+        contactForm.reset();
+        contactForm.classList.remove('was-validated');
+        inputs.forEach(function(input) {
+          input.classList.remove('is-valid', 'is-invalid');
+        });
+        if(charCount) {
+          charCount.textContent = '0 / 1000 znaków';
+          charCount.style.color = '#888';
+        }
+        var fileList = document.getElementById('fileList');
+        if(fileList) {
+          fileList.innerHTML = '';
+        }
         
-        // Ukryj komunikat po 8 sekundach
-        setTimeout(function() {
-          formMessage.style.display = 'none';
-        }, 8000);
-      })
-      .catch(function(error) {
-        console.error('Error:', error);
-        formMessage.className = 'alert alert-warning';
-        formMessage.innerHTML = '<i class="bi bi-info-circle"></i> Formularz został wysłany, ale wystąpił problem z potwierdzeniem. Jeśli nie otrzymasz odpowiedzi w ciągu 24h, skontaktuj się telefonicznie: <a href="tel:+48600820415" class="alert-link">+48 600 820 415</a>';
-        formMessage.style.display = 'block';
-        
-        // Reset formularza mimo błędu (prawdopodobnie wysłano pomyślnie)
-        setTimeout(function() {
-          contactForm.reset();
-          contactForm.classList.remove('was-validated');
-          inputs.forEach(function(input) {
-            input.classList.remove('is-valid', 'is-invalid');
-          });
-          if(charCount) {
-            charCount.textContent = '0 / 1000 znaków';
-            charCount.style.color = '#888';
-          }
-          var fileList = document.getElementById('fileList');
-          if(fileList) {
-            fileList.innerHTML = '';
-          }
-        }, 2000);
-      })
-      .finally(function() {
-        // Przywróć przycisk
         submitBtn.disabled = false;
         submitBtn.innerHTML = submitBtnOriginalHTML;
-      });
+      }, 1000);
+      
+
     });
   }
 });
