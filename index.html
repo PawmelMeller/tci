@@ -353,25 +353,82 @@
             <!-- Contact Form Section -->
             <div class="col-md-6">
                 <h2 class="text-center">Napisz do nas</h2>
-                <form id="contactForm" class="mt-4">
+                <form id="contactForm" class="mt-4" novalidate>
+                    
+                    <!-- Honeypot field (ukryte przed użytkownikami, widoczne dla botów) -->
+                    <input type="text" name="website" id="website" style="position: absolute; left: -9999px;" tabindex="-1" autocomplete="off">
+                    
                     <div class="mb-3">
-                        <label for="name" class="form-label">Imię i nazwisko</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
+                        <label for="subject" class="form-label">
+                            <i class="bi bi-tag"></i> Temat zapytania
+                        </label>
+                        <select class="form-control" id="subject" name="subject" required>
+                            <option value="">-- Wybierz temat --</option>
+                            <option value="wycena">Wycena kuchni na wymiar</option>
+                            <option value="loft">Meble loftowe</option>
+                            <option value="modernclassic">Modern Classic</option>
+                            <option value="konsultacja">Konsultacja projektowa</option>
+                            <option value="inne">Inne</option>
+                        </select>
+                        <div class="invalid-feedback">Proszę wybrać temat zapytania.</div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="name" class="form-label">
+                                <i class="bi bi-person"></i> Imię i nazwisko <span class="text-danger">*</span>
+                            </label>
+                            <input type="text" class="form-control" id="name" name="name" 
+                                   placeholder="Jan Kowalski" minlength="3" required>
+                            <div class="invalid-feedback">Proszę podać imię i nazwisko (min. 3 znaki).</div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="phone" class="form-label">
+                                <i class="bi bi-telephone"></i> Telefon
+                            </label>
+                            <input type="tel" class="form-control" id="phone" name="phone" 
+                                   placeholder="+48 600 000 000" pattern="[+]?[0-9\s\-]{9,}">
+                            <div class="invalid-feedback">Proszę podać prawidłowy numer telefonu.</div>
+                        </div>
+                    </div>
+
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                        <label for="email" class="form-label">
+                            <i class="bi bi-envelope"></i> Email <span class="text-danger">*</span>
+                        </label>
+                        <input type="email" class="form-control" id="email" name="email" 
+                               placeholder="jan.kowalski@example.com" required>
+                        <div class="invalid-feedback">Proszę podać prawidłowy adres email.</div>
                     </div>
+
                     <div class="mb-3">
-                        <label for="phone" class="form-label">Telefon (opcjonalnie)</label>
-                        <input type="tel" class="form-control" id="phone" name="phone">
+                        <label for="message" class="form-label">
+                            <i class="bi bi-chat-left-text"></i> Wiadomość <span class="text-danger">*</span>
+                        </label>
+                        <textarea class="form-control" id="message" name="message" rows="5" 
+                                  placeholder="Opisz swoje zapytanie..." minlength="10" maxlength="1000" required></textarea>
+                        <div class="form-text" id="charCount">0 / 1000 znaków</div>
+                        <div class="invalid-feedback">Wiadomość musi mieć minimum 10 znaków.</div>
                     </div>
-                    <div class="mb-3">
-                        <label for="message" class="form-label">Wiadomość</label>
-                        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="privacy" required>
+                        <label class="form-check-label" for="privacy">
+                            Akceptuję <a href="#" class="text-decoration-underline" data-bs-toggle="modal" data-bs-target="#privacyModal" onclick="event.preventDefault()">politykę prywatności</a> i wyrażam zgodę na przetwarzanie moich danych osobowych <span class="text-danger">*</span>
+                        </label>
+                        <div class="invalid-feedback">Musisz zaakceptować politykę prywatności.</div>
                     </div>
-                    <div id="formMessage" class="alert" style="display: none;"></div>
-                    <button type="submit" class="btn btn-primary w-100">Wyślij wiadomość</button>
+
+                    <div id="formMessage" class="alert" style="display: none;" role="alert"></div>
+                    
+                    <button type="submit" class="btn btn-primary w-100">
+                        <i class="bi bi-send"></i> Wyślij wiadomość
+                    </button>
+                    
+                    <p class="text-center mt-3 small">
+                        <i class="bi bi-shield-check"></i> Twoje dane są bezpieczne i nie będą udostępniane osobom trzecim.
+                    </p>
                 </form>
             </div>
 
@@ -398,14 +455,79 @@ document.addEventListener('DOMContentLoaded', function() {
   // Obsługa formularza kontaktowego
   var contactForm = document.getElementById('contactForm');
   if(contactForm) {
+    // Licznik znaków dla wiadomości
+    var messageField = document.getElementById('message');
+    var charCount = document.getElementById('charCount');
+    
+    if(messageField && charCount) {
+      messageField.addEventListener('input', function() {
+        var count = this.value.length;
+        charCount.textContent = count + ' / 1000 znaków';
+        charCount.style.color = count > 900 ? '#c0a965' : '#888';
+      });
+    }
+    
+    // Walidacja w czasie rzeczywistym
+    var inputs = contactForm.querySelectorAll('input, textarea, select');
+    inputs.forEach(function(input) {
+      input.addEventListener('blur', function() {
+        if(this.checkValidity()) {
+          this.classList.remove('is-invalid');
+          this.classList.add('is-valid');
+        } else {
+          this.classList.remove('is-valid');
+          this.classList.add('is-invalid');
+        }
+      });
+      
+      input.addEventListener('input', function() {
+        if(this.classList.contains('is-invalid') && this.checkValidity()) {
+          this.classList.remove('is-invalid');
+          this.classList.add('is-valid');
+        }
+      });
+    });
+    
     contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
+      e.stopPropagation();
       
       var formMessage = document.getElementById('formMessage');
       var submitBtn = contactForm.querySelector('button[type="submit"]');
+      var submitBtnOriginalHTML = submitBtn.innerHTML;
+      
+      // Walidacja formularza Bootstrap
+      if (!contactForm.checkValidity()) {
+        contactForm.classList.add('was-validated');
+        
+        // Pokaż komunikat błędu
+        formMessage.className = 'alert alert-warning';
+        formMessage.innerHTML = '<i class="bi bi-exclamation-triangle"></i> Proszę poprawić błędy w formularzu.';
+        formMessage.style.display = 'block';
+        
+        // Znajdź pierwsze pole z błędem i przewiń do niego
+        var firstInvalid = contactForm.querySelector(':invalid');
+        if(firstInvalid) {
+          firstInvalid.focus();
+        }
+        
+        setTimeout(function() {
+          formMessage.style.display = 'none';
+        }, 4000);
+        return;
+      }
+      
+      // Sprawdź honeypot (ochrona przed botami)
+      var honeypot = document.getElementById('website');
+      if(honeypot && honeypot.value !== '') {
+        // Bot wykryty, nie wysyłaj
+        console.log('Spam detected');
+        return;
+      }
       
       // Pobierz dane z formularza
       var formData = new FormData();
+      formData.append('subject', document.getElementById('subject').value);
       formData.append('name', document.getElementById('name').value);
       formData.append('email', document.getElementById('email').value);
       formData.append('phone', document.getElementById('phone').value);
@@ -413,7 +535,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Wyłącz przycisk podczas wysyłania
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Wysyłanie...';
+      submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Wysyłanie...';
       
       // Wyślij dane przez AJAX do send-email.php
       fetch('send-email.php', {
@@ -426,28 +548,44 @@ document.addEventListener('DOMContentLoaded', function() {
       .then(function(data) {
         if(data.success) {
           formMessage.className = 'alert alert-success';
-          formMessage.textContent = data.message;
+          formMessage.innerHTML = '<i class="bi bi-check-circle"></i> ' + data.message;
           contactForm.reset();
+          contactForm.classList.remove('was-validated');
+          
+          // Reset walidacji wizualnej
+          inputs.forEach(function(input) {
+            input.classList.remove('is-valid', 'is-invalid');
+          });
+          
+          // Reset licznika znaków
+          if(charCount) {
+            charCount.textContent = '0 / 1000 znaków';
+            charCount.style.color = '#888';
+          }
         } else {
           formMessage.className = 'alert alert-danger';
-          formMessage.textContent = data.message;
+          formMessage.innerHTML = '<i class="bi bi-exclamation-circle"></i> ' + data.message;
         }
         formMessage.style.display = 'block';
         
-        // Ukryj komunikat po 5 sekundach
+        // Przewiń do komunikatu
+        formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        
+        // Ukryj komunikat po 7 sekundach
         setTimeout(function() {
           formMessage.style.display = 'none';
-        }, 5000);
+        }, 7000);
       })
       .catch(function(error) {
+        console.error('Error:', error);
         formMessage.className = 'alert alert-danger';
-        formMessage.textContent = 'Wystąpił błąd. Spróbuj ponownie lub skontaktuj się telefonicznie.';
+        formMessage.innerHTML = '<i class="bi bi-x-circle"></i> Wystąpił błąd podczas wysyłania. Spróbuj ponownie lub skontaktuj się telefonicznie: <a href="tel:+48600820415" class="alert-link">+48 600 820 415</a>';
         formMessage.style.display = 'block';
       })
       .finally(function() {
         // Przywróć przycisk
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Wyślij wiadomość';
+        submitBtn.innerHTML = submitBtnOriginalHTML;
       });
     });
   }
@@ -464,6 +602,57 @@ document.addEventListener('DOMContentLoaded', function() {
              src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg">
     </a>
 </div>
+
+<!-- Modal Polityka Prywatności -->
+<div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content" style="background-color: #2a2a2a; color: #e0e0e0; border: 1px solid #c0a965;">
+      <div class="modal-header" style="border-bottom: 1px solid #555;">
+        <h5 class="modal-title" id="privacyModalLabel" style="color: #c0a965;">
+          <i class="bi bi-shield-check"></i> Polityka Prywatności
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6 style="color: #c0a965;">Administrator danych</h6>
+        <p>Administratorem Twoich danych osobowych jest Tomestic Creative Interior, Łajski ul. Kościelna 26, 05-119 Legionowo.</p>
+        
+        <h6 style="color: #c0a965;">Cele przetwarzania danych</h6>
+        <p>Twoje dane osobowe będą przetwarzane w celu:</p>
+        <ul>
+          <li>Odpowiedzi na Twoje zapytanie przesłane przez formularz kontaktowy</li>
+          <li>Nawiązania kontaktu w sprawie oferty</li>
+          <li>Realizacji usług stolarskich</li>
+        </ul>
+        
+        <h6 style="color: #c0a965;">Podstawa prawna</h6>
+        <p>Podstawą prawną przetwarzania Twoich danych jest Twoja zgoda (art. 6 ust. 1 lit. a RODO) oraz uzasadniony interes administratora w postaci odpowiedzi na zapytania klientów.</p>
+        
+        <h6 style="color: #c0a965;">Okres przechowywania danych</h6>
+        <p>Twoje dane osobowe będą przechowywane przez okres niezbędny do realizacji celów, dla których zostały zebrane, nie dłużej jednak niż przez 2 lata od momentu przesłania formularza.</p>
+        
+        <h6 style="color: #c0a965;">Twoje prawa</h6>
+        <p>Przysługuje Ci prawo do:</p>
+        <ul>
+          <li>Dostępu do swoich danych osobowych</li>
+          <li>Sprostowania danych</li>
+          <li>Usunięcia danych</li>
+          <li>Ograniczenia przetwarzania</li>
+          <li>Przenoszenia danych</li>
+          <li>Wniesienia sprzeciwu wobec przetwarzania</li>
+          <li>Cofnięcia zgody w dowolnym momencie</li>
+        </ul>
+        
+        <h6 style="color: #c0a965;">Kontakt</h6>
+        <p>W sprawach dotyczących ochrony danych osobowych możesz skontaktować się z nami pod adresem: <a href="mailto:tomestic@gmail.com" style="color: #c0a965;">tomestic@gmail.com</a> lub telefonicznie: +48 600 820 415</p>
+      </div>
+      <div class="modal-footer" style="border-top: 1px solid #555;">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: #555; border: none;">Zamknij</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
 // Animacja zoom-out tylko po wejściu w widok sekcji z kartami
 (function() {
