@@ -645,8 +645,8 @@ document.addEventListener('DOMContentLoaded', function() {
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Wysyłanie...';
       
-      // Wyślij dane przez FormSubmit
-      fetch('https://formsubmit.co/tomestic@gmail.com', {
+      // Wyślij dane przez FormSubmit (TEST: pawel.meller3@gmail.com)
+      fetch('https://formsubmit.co/pawel.meller3@gmail.com', {
         method: 'POST',
         body: formData,
         headers: {
