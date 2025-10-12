@@ -333,7 +333,7 @@
         </div>
     </div>
 
-    <div class="container contact-container d-flex justify-content-center align-items-center" id="kontakt">
+    <div class="container contact-container" id="kontakt">
         <div class="row w-100 justify-content-center">
 
             <!-- Contact Info Section -->
@@ -348,6 +348,31 @@
                 <div class="footer">
                     <p>&copy; 2024 Tomasz Woźniak</p>
                 </div>
+            </div>
+
+            <!-- Contact Form Section -->
+            <div class="col-md-6">
+                <h2 class="text-center">Napisz do nas</h2>
+                <form id="contactForm" class="mt-4">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Imię i nazwisko</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Telefon (opcjonalnie)</label>
+                        <input type="tel" class="form-control" id="phone" name="phone">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Wiadomość</label>
+                        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <div id="formMessage" class="alert" style="display: none;"></div>
+                    <button type="submit" class="btn btn-primary w-100">Wyślij wiadomość</button>
+                </form>
             </div>
 
         </div>
@@ -367,6 +392,63 @@ document.addEventListener('DOMContentLoaded', function() {
     contactBtn.addEventListener('click', function(e) {
       e.preventDefault();
       contactSection.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  // Obsługa formularza kontaktowego
+  var contactForm = document.getElementById('contactForm');
+  if(contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      var formMessage = document.getElementById('formMessage');
+      var submitBtn = contactForm.querySelector('button[type="submit"]');
+      
+      // Pobierz dane z formularza
+      var formData = new FormData();
+      formData.append('name', document.getElementById('name').value);
+      formData.append('email', document.getElementById('email').value);
+      formData.append('phone', document.getElementById('phone').value);
+      formData.append('message', document.getElementById('message').value);
+      
+      // Wyłącz przycisk podczas wysyłania
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Wysyłanie...';
+      
+      // Wyślij dane przez AJAX do send-email.php
+      fetch('send-email.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        if(data.success) {
+          formMessage.className = 'alert alert-success';
+          formMessage.textContent = data.message;
+          contactForm.reset();
+        } else {
+          formMessage.className = 'alert alert-danger';
+          formMessage.textContent = data.message;
+        }
+        formMessage.style.display = 'block';
+        
+        // Ukryj komunikat po 5 sekundach
+        setTimeout(function() {
+          formMessage.style.display = 'none';
+        }, 5000);
+      })
+      .catch(function(error) {
+        formMessage.className = 'alert alert-danger';
+        formMessage.textContent = 'Wystąpił błąd. Spróbuj ponownie lub skontaktuj się telefonicznie.';
+        formMessage.style.display = 'block';
+      })
+      .finally(function() {
+        // Przywróć przycisk
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Wyślij wiadomość';
+      });
     });
   }
 });

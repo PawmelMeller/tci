@@ -194,14 +194,51 @@ html { font-size: 100% !important; }
 
 .form-control:focus {
     box-shadow: none;
+    border-color: #c0a965;
+    background-color: #3a3a3a;
 }
 
 .form-control::placeholder {
-    color: white;
+    color: #888;
+}
+
+.btn-primary {
+    background-color: #c0a965;
+    border-color: #c0a965;
+    color: #232323;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #d4be7a;
+    border-color: #d4be7a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(192, 169, 101, 0.3);
+}
+
+.btn-primary:disabled {
+    background-color: #666;
+    border-color: #666;
+    cursor: not-allowed;
 }
 
 .btn {
     margin-top: 10px;
+}
+
+#contactForm label {
+    color: #c0a965;
+    font-weight: 500;
+    text-align: left;
+    display: block;
+}
+
+#contactForm {
+    background-color: #2a2a2a;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
 .footer {
