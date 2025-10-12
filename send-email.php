@@ -60,10 +60,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Mapowanie tematów
     $subject_map = [
-        'wycena' => 'Wycena kuchni na wymiar',
-        'loft' => 'Meble loftowe',
-        'modernclassic' => 'Modern Classic',
+        'kuchnia-wymiar' => 'Kuchnia na wymiar',
+        'meble-loftowe' => 'Meble loftowe',
+        'modern-classic' => 'Modern Classic',
+        'pienza' => 'Pienza',
+        'prowansja' => 'Prowansja',
+        'dark-glow' => 'Dark Glow',
+        'zabudowa' => 'Zabudowa kuchenna',
+        'szafy' => 'Szafy na wymiar',
         'konsultacja' => 'Konsultacja projektowa',
+        'wycena' => 'Prośba o wycenę',
         'inne' => 'Inne'
     ];
     

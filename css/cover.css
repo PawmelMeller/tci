@@ -393,6 +393,87 @@ html { font-size: 100% !important; }
     border-width: 0.15em;
 }
 
+/* Styl dla listy załączonych plików */
+.file-list-container {
+    background-color: #1f1f1f;
+    border: 1px solid #555;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.file-item {
+    color: #e0e0e0;
+    padding: 8px;
+    margin: 5px 0;
+    background-color: #2a2a2a;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.file-item:hover {
+    background-color: #333;
+}
+
+.file-item i {
+    color: #c0a965;
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.file-item .text-success {
+    color: #5cd67a !important;
+    margin-left: auto;
+    font-size: 0.85rem;
+}
+
+.file-item .text-danger {
+    color: #ff6b6b !important;
+    margin-left: auto;
+    font-size: 0.85rem;
+}
+
+input[type="file"].form-control {
+    padding: 10px;
+    cursor: pointer;
+}
+
+input[type="file"].form-control::-webkit-file-upload-button {
+    background: linear-gradient(135deg, #c0a965 0%, #d4be7a 100%);
+    border: none;
+    color: #232323;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+}
+
+input[type="file"].form-control::-webkit-file-upload-button:hover {
+    background: linear-gradient(135deg, #d4be7a 0%, #e8d89a 100%);
+    transform: translateY(-1px);
+}
+
+input[type="file"].form-control::file-selector-button {
+    background: linear-gradient(135deg, #c0a965 0%, #d4be7a 100%);
+    border: none;
+    color: #232323;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+}
+
+input[type="file"].form-control::file-selector-button:hover {
+    background: linear-gradient(135deg, #d4be7a 0%, #e8d89a 100%);
+    transform: translateY(-1px);
+}
+
 .footer {
     color: #c0a965;
     font-size: 14px;
