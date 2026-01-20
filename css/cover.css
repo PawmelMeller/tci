@@ -21,13 +21,18 @@
 
 /* Custom default button */
 #background-video {
-    position: absolute; /* Fixed, aby wideo pozostało w tle podczas scrollowania */
+    position: absolute;
+    /* Fixed, aby wideo pozostało w tle podczas scrollowania */
     top: 0;
     left: 0;
-    width: 100%; /* Ustawienie szerokości na 100% widocznego obszaru przeglądarki */
-    height: 100%; /* Ustawienie wysokości na 100% widocznego obszaru przeglądarki */
-    object-fit: cover; /* Zabezpieczenie, aby wideo dopasowywało się proporcjonalnie */
-    z-index: -2; /* Ustawienie wideo daleko w tle */
+    width: 100%;
+    /* Ustawienie szerokości na 100% widocznego obszaru przeglądarki */
+    height: 100%;
+    /* Ustawienie wysokości na 100% widocznego obszaru przeglądarki */
+    object-fit: cover;
+    /* Zabezpieczenie, aby wideo dopasowywało się proporcjonalnie */
+    z-index: -2;
+    /* Ustawienie wideo daleko w tle */
 }
 
 /* Sekcja z zawartością i przezroczystym tłem */
@@ -37,19 +42,24 @@
     color: white;
     text-align: center;
     padding: 20px;
-    min-height: 100vh; /* Zapewnienie, że sekcja z wideo zajmuje całą wysokość ekranu */
+    min-height: 100vh;
+    /* Zapewnienie, że sekcja z wideo zajmuje całą wysokość ekranu */
 }
 
 /* Sekcja z białym tłem */
 .section-white {
-    z-index: 1; /* Sekcja biała nad wideo */
+    z-index: 1;
+    /* Sekcja biała nad wideo */
     background-color: #151715;
     color: black;
     padding: 50px 20px;
     text-align: center;
-    width: 100%; /* Zmienione na 100% */
-    min-height: 100vh; /* Zapewnienie, że sekcja z białym tłem zajmuje całą wysokość ekranu */
-    margin: 0; /* Usunięcie marginesów */
+    width: 100%;
+    /* Zmienione na 100% */
+    min-height: 100vh;
+    /* Zapewnienie, że sekcja z białym tłem zajmuje całą wysokość ekranu */
+    margin: 0;
+    /* Usunięcie marginesów */
 }
 
 /* Styl dla treści */
@@ -59,15 +69,18 @@ h1 {
     margin: 70px 0;
 }
 
-h1, p {
-    z-index: 2; /* Treść musi być nad półprzezroczystym tłem */
+h1,
+p {
+    z-index: 2;
+    /* Treść musi być nad półprzezroczystym tłem */
 }
 
 header {
     text-shadow: 2px 2px 12px black;
     margin-right: 23%;
     margin-left: 23%;
-    z-index: 2; /* Header musi być nad wideo */
+    z-index: 2;
+    /* Header musi być nad wideo */
 }
 
 /* Dodanie overflow-x: hidden do body */
@@ -76,7 +89,8 @@ body {
     font-family: "Antic Didone", serif;
     font-weight: 400;
     font-style: normal;
-    letter-spacing: 3px; /* Adjust the value as needed */
+    letter-spacing: 3px;
+    /* Adjust the value as needed */
 
 
 }
@@ -86,7 +100,8 @@ body {
 .btn-light:hover,
 .btn-light:focus {
     color: #fff;
-    text-shadow: none; /* Prevent inheritance from `body` */
+    text-shadow: none;
+    /* Prevent inheritance from `body` */
 }
 
 
@@ -100,24 +115,33 @@ body {
 }
 
 ::-webkit-scrollbar {
-    width: 12px; /* Szerokość scrollbara */
+    width: 12px;
+    /* Szerokość scrollbara */
 }
 
 ::-webkit-scrollbar-track {
-    background: #2c2c2c; /* Kolor tła scrollbara */
-    border-radius: 6px; /* Zaokrąglone rogi */
+    background: #2c2c2c;
+    /* Kolor tła scrollbara */
+    border-radius: 6px;
+    /* Zaokrąglone rogi */
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #1b1b1b; /* Kolor kciuka scrollbara */
-    border-radius: 6px; /* Zaokrąglone rogi kciuka */
+    background-color: #1b1b1b;
+    /* Kolor kciuka scrollbara */
+    border-radius: 6px;
+    /* Zaokrąglone rogi kciuka */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: #454545; /* Kolor kciuka podczas najechania */
+    background-color: #454545;
+    /* Kolor kciuka podczas najechania */
 }
 
-html { font-size: 100% !important; }
+html {
+    font-size: 100% !important;
+}
+
 /*
  * Header
  */
@@ -132,7 +156,7 @@ html { font-size: 100% !important; }
     border-bottom-color: #fff;
 }
 
-.nav-masthead .nav-link + .nav-link {
+.nav-masthead .nav-link+.nav-link {
     margin-left: 1rem;
 }
 
@@ -145,8 +169,10 @@ html { font-size: 100% !important; }
 .icon-box {
     text-align: center;
     padding: 20px;
-    color: white; /* Matching font color */
-    background-color: #333; /* Background color for the boxes */
+    color: white;
+    /* Matching font color */
+    background-color: #333;
+    /* Background color for the boxes */
     height: 180px;
     display: flex;
     flex-direction: column;
@@ -155,19 +181,24 @@ html { font-size: 100% !important; }
 }
 
 .icon-box i {
-    font-size: 30px; /* Icon size reduced */
+    font-size: 30px;
+    /* Icon size reduced */
     margin-bottom: 8px;
-    color: #c0a965; /* Icon color */
+    color: #c0a965;
+    /* Icon color */
 }
 
 .icon-box h5 {
-    font-size: 16px; /* Reduced font size */
+    font-size: 16px;
+    /* Reduced font size */
     margin: 0;
-    color: white; /* Text color */
+    color: white;
+    /* Text color */
 }
 
 .icon-box p {
-    font-size: 12px; /* Reduced font size for descriptions */
+    font-size: 12px;
+    /* Reduced font size for descriptions */
     color: white;
 }
 
@@ -186,7 +217,8 @@ html { font-size: 100% !important; }
     margin: 0;
 }
 
-.form-control, .btn {
+.form-control,
+.btn {
     border: 1px solid #c0a965;
     background-color: #333;
     color: #c0a965;
@@ -225,12 +257,13 @@ html { font-size: 100% !important; }
     cursor: pointer;
     height: 500px;
     max-height: 500px;
-    transform: scale(3); /* Początkowe przybliżenie */
+    transform: scale(3);
+    /* Początkowe przybliżenie */
     object-fit: cover;
     width: 100%;
     background-size: cover;
     background-position: center;
-    transition: transform 0.35s cubic-bezier(.4,1.7,.7,1.01), box-shadow 0.25s;
+    transition: transform 0.35s cubic-bezier(.4, 1.7, .7, 1.01), box-shadow 0.25s;
     will-change: transform;
 }
 
@@ -240,36 +273,44 @@ html { font-size: 100% !important; }
 
 @keyframes zoomOut {
     from {
-        transform: scale(1.2); /* Przybliżenie na początku */
+        transform: scale(1.2);
+        /* Przybliżenie na początku */
     }
+
     to {
-        transform: scale(1); /* Powolne oddalenie do normalnego rozmiaru */
+        transform: scale(1);
+        /* Powolne oddalenie do normalnego rozmiaru */
     }
 }
 
-.zoom-img:hover, .zoom-img:focus {
-  transform: scale(1.045);
-  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
-  z-index: 2;
+.zoom-img:hover,
+.zoom-img:focus {
+    transform: scale(1.045);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.18);
+    z-index: 2;
 }
 
 ::placeholder {
     color: white;
-    opacity: 1; /* Firefox */
+    opacity: 1;
+    /* Firefox */
 }
 
 
 .row {
-    display: -ms-flexbox; /* IE10 */
+    display: -ms-flexbox;
+    /* IE10 */
     display: flex;
-    -ms-flex-wrap: wrap; /* IE10 */
+    -ms-flex-wrap: wrap;
+    /* IE10 */
     flex-wrap: wrap;
     padding: 0 4px;
 }
 
 /* Create four equal columns that sit next to each other */
 .column {
-    -ms-flex: 25%; /* IE10 */
+    -ms-flex: 25%;
+    /* IE10 */
     flex: 25%;
     max-width: 25%;
     padding: 0 4px;
@@ -301,30 +342,41 @@ html { font-size: 100% !important; }
 
 /* Modal */
 .modal {
-    display: none; /* Ukryty na początku */
+    display: none;
+    /* Ukryty na początku */
     position: fixed;
     z-index: 1;
     left: 0;
     top: 0;
-    width: 100vw; /* 100% szerokości widoku */
-    height: 100vh; /* 100% wysokości widoku */
-    overflow: hidden; /* Ukrywa przewijanie */
-    background-color: rgba(0, 0, 0, 0.8); /* Przezroczysty czarny */
+    width: 100vw;
+    /* 100% szerokości widoku */
+    height: 100vh;
+    /* 100% wysokości widoku */
+    overflow: hidden;
+    /* Ukrywa przewijanie */
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Przezroczysty czarny */
     justify-content: center;
     align-items: center;
-    animation: fadeIn 0.5s; /* Animacja otwierania */
+    animation: fadeIn 0.5s;
+    /* Animacja otwierania */
 }
 
 .modal img {
-    width: 100%; /* 100% szerokości modalu */
-    height: 100%; /* 100% wysokości modalu */
-    object-fit: contain; /* Dostosowuje obraz do rozmiarów modalu */
+    width: 100%;
+    /* 100% szerokości modalu */
+    height: 100%;
+    /* 100% wysokości modalu */
+    object-fit: contain;
+    /* Dostosowuje obraz do rozmiarów modalu */
 }
 
 .close {
     position: absolute;
-    top: 20px; /* Przesunięcie w dół */
-    right: 35px; /* Przesunięcie w prawo */
+    top: 20px;
+    /* Przesunięcie w dół */
+    right: 35px;
+    /* Przesunięcie w prawo */
     color: white;
     font-size: 40px;
     font-weight: bold;
@@ -333,18 +385,27 @@ html { font-size: 100% !important; }
 
 /* Styl przycisków do przewijania */
 button {
-    background-color: rgba(255, 255, 255, 0.3); /* Przezroczyste białe tło */
-    color: white; /* Biały tekst */
-    border: none; /* Bez obramowania */
-    border-radius: 5px; /* Zaokrąglone rogi */
-    padding: 10px; /* Padding wewnętrzny */
-    cursor: pointer; /* Kursor jako wskaźnik */
-    font-size: 20px; /* Rozmiar czcionki */
-    transition: background-color 0.3s; /* Płynna zmiana koloru tła */
+    background-color: rgba(255, 255, 255, 0.3);
+    /* Przezroczyste białe tło */
+    color: white;
+    /* Biały tekst */
+    border: none;
+    /* Bez obramowania */
+    border-radius: 5px;
+    /* Zaokrąglone rogi */
+    padding: 10px;
+    /* Padding wewnętrzny */
+    cursor: pointer;
+    /* Kursor jako wskaźnik */
+    font-size: 20px;
+    /* Rozmiar czcionki */
+    transition: background-color 0.3s;
+    /* Płynna zmiana koloru tła */
 }
 
 button:hover {
-    background-color: rgba(255, 255, 255, 0.5); /* Jaśniejsze tło podczas najechania */
+    background-color: rgba(255, 255, 255, 0.5);
+    /* Jaśniejsze tło podczas najechania */
 }
 
 /* Animacja otwierania modala */
@@ -352,6 +413,7 @@ button:hover {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -388,6 +450,7 @@ button:hover {
     gap: 10px;
     padding: 20px;
 }
+
 .gallery img {
     width: calc(25% - 10px);
     height: auto;
@@ -397,146 +460,219 @@ button:hover {
     transition: transform 0.5s ease;
     cursor: pointer;
 }
+
+@media (max-width: 768px) {
+    .gallery img {
+        width: calc(50% - 10px);
+        /* 2 columns on mobile */
+    }
+
+    .scroll-nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+        right: 16px;
+        /* Move closer to edge */
+        bottom: 70px !important;
+        /* Adjust position */
+    }
+
+    #scrollUpBtn {
+        bottom: 120px !important;
+    }
+
+    .social-links {
+        left: 10px;
+        bottom: 10px;
+    }
+
+    /* Increase side padding for main content containers on mobile */
+    .container,
+    .col-lg-10 {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    section {
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
+    }
+
+    /* Navigation Mobile Fix */
+    .nav-masthead .nav-link {
+        padding-left: .5rem !important;
+        padding-right: .5rem !important;
+        font-size: 0.9rem;
+    }
+}
+
 .gallery img:hover {
     transform: scale(1.03);
 }
 
 /* --- MODAL --- */
 #imgModal {
-  display: none;
-  background: rgba(0,0,0,0.85);
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  z-index: 3000;
-  align-items: center;
-  justify-content: center;
+    display: none;
+    background: rgba(0, 0, 0, 0.85);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 3000;
+    align-items: center;
+    justify-content: center;
 }
+
 .modal-close-btn {
-  position: absolute;
-  top: 32px;
-  right: 48px;
-  font-size: 3rem;
-  color: #fff;
-  cursor: pointer;
-  z-index: 10;
-  background: none;
-  border: none;
+    position: absolute;
+    top: 32px;
+    right: 48px;
+    font-size: 3rem;
+    color: #fff;
+    cursor: pointer;
+    z-index: 10;
+    background: none;
+    border: none;
 }
+
 .modal-nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 2.5rem;
-  color: #fff;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 10;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2.5rem;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
 }
-.modal-prev { left: 32px; }
-.modal-next { right: 32px; }
+
+.modal-prev {
+    left: 32px;
+}
+
+.modal-next {
+    right: 32px;
+}
+
 .modal-img {
-  max-width: 90vw;
-  max-height: 80vh;
-  border-radius: 10px;
-  box-shadow: 0 4px 32px #000a;
-  transition: transform 0.4s cubic-bezier(.4,2,.6,1);
-  display: block;
-  margin: auto;
+    max-width: 90vw;
+    max-height: 80vh;
+    border-radius: 10px;
+    box-shadow: 0 4px 32px #000a;
+    transition: transform 0.4s cubic-bezier(.4, 2, .6, 1);
+    display: block;
+    margin: auto;
 }
 
 /* --- MAIL LINK --- */
 .mail-link {
-  color: #c0a965;
+    color: #c0a965;
 }
 
 /* --- LOGO SVG --- */
 .logo-svg-wrap {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
+
 .logo-svg {
-  height: 20px !important;
-  width: 20px !important;
-  margin-right: 10px;
+    height: 20px !important;
+    width: 20px !important;
+    margin-right: 10px;
 }
 
 /* --- SCROLL NAV BUTTONS --- */
-.scroll-next-section-btn, .scroll-prev-section-btn {
-  display: none !important;
+.scroll-next-section-btn,
+.scroll-prev-section-btn {
+    display: none !important;
 }
+
 .scroll-nav-btn {
-  position: fixed;
-  right: 32px;
-  z-index: 2000;
-  background: rgba(0,0,0,0.7);
-  border: none;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  color: #fff;
-  font-size: 2rem;
-  cursor: pointer;
-  box-shadow: 0 2px 12px #0006;
-  transition: background 0.2s, color 0.2s, opacity 0.2s;
-  opacity: 0.85;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: fixed;
+    right: 32px;
+    z-index: 2000;
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    box-shadow: 0 2px 12px #0006;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+    opacity: 0.85;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.scroll-nav-btn[hidden] { display: none !important; }
+
+.scroll-nav-btn[hidden] {
+    display: none !important;
+}
+
 .scroll-nav-btn:hover {
-  background: #c0a965;
-  color: #232323;
-  opacity: 1;
+    background: #c0a965;
+    color: #232323;
+    opacity: 1;
 }
-#scrollDownBtn { bottom: 32px; }
-#scrollUpBtn { bottom: 92px; }
+
+#scrollDownBtn {
+    bottom: 32px;
+}
+
+#scrollUpBtn {
+    bottom: 92px;
+}
 
 .brand-flex {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 #kontakt {
-  min-height: unset;
+    min-height: unset;
 }
 
 /* --- CONTACT SECTION CENTERING FOR REALIZACJE + MODERN GRADIENT BG --- */
 #kontakt-stopka {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 350px;
-  /* Modern dark gradient background */
-  background: linear-gradient(135deg, #18191a 0%, #232526 60%, #18191a 100%);
-  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25);
-  border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 350px;
+    /* Modern dark gradient background */
+    background: linear-gradient(135deg, #18191a 0%, #232526 60%, #18191a 100%);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 18px;
 }
+
 #kontakt-stopka .row {
-  width: 100%;
-  justify-content: center;
-  display: flex;
+    width: 100%;
+    justify-content: center;
+    display: flex;
 }
+
 #kontakt-stopka .col-md-6 {
-  text-align: center;
+    text-align: center;
 }
+
 @media (max-width: 768px) {
-  #kontakt-stopka {
-    min-height: 220px;
-    padding: 20px 0;
-    border-radius: 10px;
-  }
+    #kontakt-stopka {
+        min-height: 220px;
+        padding: 20px 0;
+        border-radius: 10px;
+    }
 }
 
 /* --- USUŃ MARGIN-TOP I MARGIN-BOTTOM DLA SEKCJI W WIDOKACH KOLEKCJI, ZASTĄP WIĘKSZYM PADDINGIEM --- */
 section {
-  margin-bottom: 0 !important;
-  margin-top: 0 !important;
-  padding-top: 56px !important;
-  padding-bottom: 56px !important;
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
 }
 
 /* --- VIDEO LOADER --- */
