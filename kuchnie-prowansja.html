@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data: https:; media-src 'self'; connect-src 'self' https://cdn.jsdelivr.net;">
+  <title>Kuchnie nowoczesne Legionowo – Prowansja | Stolarz Legionowo</title>
+  <meta name="description"
+    content="Kuchnie nowoczesne Prowansja na wymiar w Legionowie. Stolarz na zamówienie, meble kuchenne, zabudowy. Zobacz realizacje!">
+  <meta name="keywords"
+    content="kuchnie nowoczesne Legionowo, kuchnie na wymiar Legionowo, stolarz Legionowo, meble na wymiar Legionowo, Prowansja Legionowo, kuchnie Legionowo, stolarz na zamówienie Legionowo">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Antic+Didone&subset=latin,latin-ext&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet"
+    crossorigin="anonymous">
+  <link rel="icon" href="favicon.png" type="image/png" sizes="480x480">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link href="css/cover.css" rel="stylesheet">
+  <link href="css/kuchnia.css" rel="stylesheet">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="author" content="Tomasz Woźniak">
+  <meta property="og:title" content="Kuchnie Prowansalskie Legionowo – Styl Prowansja | Stolarz Legionowo">
+  <meta property="og:description"
+    content="Klasyczne kuchnie w stylu prowansalskim na wymiar. Stolarz Legionowo – projekt i wykonanie białych kuchni z duszą. Zobacz nasze realizacje Prowansja!">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tcistolarstwowozniak.pl/kuchnie-prowansja.html">
+  <meta property="og:image" content="https://tcistolarstwowozniak.pl/images/kuchnie/img.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kuchnie Prowansalskie Legionowo – Styl Prowansja | Stolarz Legionowo">
+  <meta name="twitter:description"
+    content="Klasyczne kuchnie w stylu prowansalskim na wymiar. Stolarz Legionowo – projekt i wykonanie białych kuchni z duszą. Zobacz nasze realizacje Prowansja!">
+  <meta name="twitter:image" content="https://tcistolarstwowozniak.pl/images/kuchnie/img.png">
+  <link rel="canonical" href="https://tcistolarstwowozniak.pl/kuchnie-prowansja.html">
+  <style>
+    body {
+      background: linear-gradient(135deg, #232526 0%, #414345 100%);
+    }
+
+    .hero-section.moderno-bg {
+      background-image: url('images/kuchnie-prowansja/Classic Elegance in a Timeless Kitchen.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #fff !important;
+    }
+
+    .hero-section.moderno-bg h1,
+    .hero-section.moderno-bg h2,
+    .hero-section.moderno-bg p,
+    .hero-section.moderno-bg .subheading {
+      color: #fff !important;
+      text-shadow: 0 2px 8px #000, 0 1px 0 #000;
+    }
+
+    .gallery-section.prowansja-bg,
+    .details-section.prowansja-bg,
+    .product-info.prowansja-bg {
+      background: linear-gradient(120deg, #232323 0%, #3a2e2a 100%);
+      color: #fff;
+    }
+
+    .img-modal {
+      display: flex;
+      opacity: 0;
+      pointer-events: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.4s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .img-modal.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .img-modal img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 16px;
+      box-shadow: 0 0 40px #000a, 0 8px 32px #0008;
+      transform: scale(0.96);
+      opacity: 0;
+      transition: opacity 0.3s 0.1s, transform 0.3s 0.1s;
+    }
+
+    .img-modal.open img {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .img-modal .close-modal {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      font-size: 2.5rem;
+      color: #fff;
+      cursor: pointer;
+      z-index: 10001;
+      transition: color 0.2s;
+    }
+
+    .img-modal .close-modal:hover {
+      color: #c0a965;
+    }
+
+    .img-fluid,
+    .zoom-img {
+      cursor: pointer;
+    }
+
+    .scroll-next-section-btn,
+    .scroll-prev-section-btn {
+      display: none !important;
+    }
+
+    .scroll-nav-btn {
+      position: fixed;
+      right: 32px;
+      z-index: 2000;
+      background: rgba(0, 0, 0, 0.7);
+      border: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      box-shadow: 0 2px 12px #0006;
+      transition: background 0.2s, color 0.2s, opacity 0.2s;
+      opacity: 0.85;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .scroll-nav-btn[hidden] {
+      display: none !important;
+    }
+
+    .scroll-nav-btn:hover {
+      background: #c0a965;
+      color: #232323;
+      opacity: 1;
+    }
+
+    #scrollDownBtn {
+      bottom: 32px;
+    }
+
+    #scrollUpBtn {
+      bottom: 92px;
+    }
+
+    .mail-link {
+      color: #c0a965;
+    }
+
+    /* --- MODAL IMAGE NEW SYSTEM --- */
+    .img-modal-new {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .img-modal-new.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .img-modal-new img {
+      max-width: 92vw;
+      max-height: 92vh;
+      border-radius: 18px;
+      box-shadow: 0 0 40px #000a, 0 8px 32px #0008;
+      transform: scale(0.92) translateY(40px);
+      opacity: 0;
+      transition: opacity 0.35s 0.05s, transform 0.35s 0.05s;
+      cursor: zoom-in;
+    }
+
+    .img-modal-new.open img {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    .img-modal-new img.zoomed {
+      cursor: zoom-out;
+      transition: transform 0.4s cubic-bezier(.4, 0, .2, 1), opacity 0.35s 0.05s;
+      transform: scale(2.1) translateY(0) !important;
+      z-index: 10002;
+    }
+
+    .img-modal-new .close-modal-new {
+      position: absolute;
+      top: 32px;
+      right: 48px;
+      font-size: 2.7rem;
+      color: #fff;
+      cursor: pointer;
+      z-index: 10001;
+      background: none;
+      border: none;
+      transition: color 0.2s;
+    }
+
+    .img-modal-new .close-modal-new:hover {
+      color: #c0a965;
+    }
+
+    .img-fluid {
+      cursor: zoom-in;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="hero-section prowansja-bg">
+    <div class="container">
+      <h2 class="subheading">Kuchnie</h2>
+      <h1 class="display-4">Prowansalska Elegancja</h1>
+      <p class="lead"></p>
+      <div class="composition-info">
+        <p class="composition-title">KOMPOZYCJA</p>
+        <p class="composition-text">Kolekcja Prowansja to polaczenie prostych linii, jasnych przestrzeni i
+          funkcjonalnych rozwiazan. Kuchnie te zachwycaja subtelna eleganca i przytulnym, prowansalskim charakterem,
+          idealne dla milosnikow klasycznego designu.</p>
+      </div>
+    </div>
+  </section>
+  <section class="gallery-section py-5 text-light prowansja-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img alt="Biała kuchnia prowansalska Legionowo - klasyczna elegancja" class="img-fluid rounded"
+            src="images/kuchnie-prowansja/Classic Elegance in a Timeless Kitchen.png">
+        </div>
+        <div class="col-md-6">
+          <h2 class="gallery-title">Przestrzen i Swiatlo</h2>
+          <p class="gallery-description">Duze przeszklenia i jasne powierzchnie sprawiaja, ze kuchnia Prowansja jest
+            pelna swiatla i przestrzeni. Minimalistyczne wykonczenia podkreslaja prowansalski styl.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="details-section py-5 prowansja-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Wyspa Kuchenna</h2>
+          <p>Centralna wyspa to serce kuchni Prowansja – miejsce spotkan, gotowania i relaksu. Wysokiej jakosci
+            materialy i przemyslana ergonomia zapewniaja komfort uzytkowania.</p>
+        </div>
+        <div class="col-md-6">
+          <img alt="Wyspa kuchenna w stylu prowansalskim z jadalnią" class="img-fluid"
+            src="images/kuchnie-prowansja/Elegant Kitchen Island with Dining Area.png">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="gallery-section py-5 text-light prowansja-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img alt="Drewniana wyspa kuchenna z marmurowym blatem - styl Prowansja" class="img-fluid"
+            src="images/kuchnie-prowansja/Elegant Wooden Kitchen Island with Marble Countertop.png">
+        </div>
+        <div class="col-md-6 d-flex flex-column justify-content-center">
+          <h2 class="gallery-title mt-4">Prowansalskie Akcenty</h2>
+          <p class="gallery-description">Wykonczenia z drewna i marmuru nadaja kuchni ciepla i luksusu, zachowujac przy
+            tym prowansalski charakter calej przestrzeni.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="details-section py-5 prowansja-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Przemyslana Funkcjonalnosc</h2>
+          <p>Kazdy element kuchni Prowansja zostal zaprojektowany z mysla o wygodzie uzytkownika. Przestronne blaty,
+            nowoczesne sprzety i praktyczne rozwiazania ulatwiaja codzienne gotowanie.</p>
+        </div>
+        <div class="col-md-6">
+          <img alt="Luksusowa kuchnia prowansalska z jadalnią Legionowo" class="img-fluid"
+            src="images/kuchnie-prowansja/Luxurious Kitchen with Elegant Dining Area.png">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="product-info py-5 prowansja-bg">
+    <div class="container text-center">
+      <h2>Zapytanie o Informacje</h2>
+      <p>Skontaktuj sie z nami, aby uzyskac wiecej informacji o kolekcji Prowansja</p>
+      <button class="btn btn-primary">Popros o wiecej informacji</button>
+    </div>
+  </section>
+  <div class="container contact-container d-flex justify-content-center align-items-center" id="kontakt">
+    <nav class="nav nav-masthead justify-content-center w-100 mb-4 ps-0 pe-0">
+      <a class="nav-link fw-bold py-1 px-2" href="index.html">Start</a>
+      <a class="nav-link fw-bold py-1 px-2" href="realizacje.html">Realizacje</a>
+      <a class="nav-link fw-bold py-1 px-2" href="#kontakt">Kontakt</a>
+    </nav>
+    <div class="row w-100 justify-content-center">
+      <div class="col-md-6 text-center">
+        <h2>Kontakt</h2>
+        <div class="contact-info mt-4">
+          <p><i class="bi bi-house-door"></i> Łajski, ul. Kościelna 26<br> 05-119 Legionowo</p>
+          <p><i class="bi bi-envelope"></i> <a href="mailto:tomestic@gmail.com" class="mail-link">tomestic@gmail.com</a>
+          </p>
+          <p><i class="bi bi-telephone"></i> +48 600 820 415</p>
+        </div>
+        <div class="footer">
+          <p>&copy; 2024 Tomasz Woźniak</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal for image preview -->
+  <div class="img-modal" id="imgModal">
+    <span class="close-modal" id="closeModal">&times;</span>
+    <img id="modalImg" src="" alt="Podgląd zdjęcia">
+  </div>
+  <!-- Modal for image preview (NEW SYSTEM) -->
+  <div class="img-modal-new" id="imgModalNew">
+    <button class="close-modal-new" id="closeModalNew" aria-label="Zamknij">&times;</button>
+    <img id="modalImgNew" src="" alt="Podgląd zdjęcia">
+  </div>
+  <!-- Scroll navigation buttons -->
+  <button id="scrollUpBtn" class="scroll-nav-btn" title="Przewiń do góry" hidden><i
+      class="bi bi-chevron-double-up"></i></button>
+  <button id="scrollDownBtn" class="scroll-nav-btn" title="Przewiń w dół" hidden><i
+      class="bi bi-chevron-double-down"></i></button>
+  <script src="js/shared-ui.js"></script>
+  <script>
+    (function () {
+      // Pobierz wszystkie obrazki w sekcji galerii i szczegółów
+      const galleryImgs = Array.from(document.querySelectorAll('.img-fluid'));
+      const modal = document.getElementById('imgModal');
+      const modalImg = document.getElementById('modalImg');
+      const closeBtn = document.getElementById('closeModal');
+      let currentIdx = 0;
+
+      function showModal(idx) {
+        if (!galleryImgs[idx]) return;
+        currentIdx = idx;
+        modalImg.src = galleryImgs[idx].src;
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+      function showNext() {
+        showModal((currentIdx + 1) % galleryImgs.length);
+      }
+      function showPrev() {
+        showModal((currentIdx - 1 + galleryImgs.length) % galleryImgs.length);
+      }
+
+      galleryImgs.forEach((img, idx) => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', function (e) {
+          e.preventDefault();
+          showModal(idx);
+        });
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (modal.classList.contains('open')) {
+          if (e.key === 'Escape') closeModal();
+          if (e.key === 'ArrowRight') showNext();
+          if (e.key === 'ArrowLeft') showPrev();
+        }
+      });
+    })();
+    // --- NEW MODAL SYSTEM ---
+    (function () {
+      const galleryImgs = Array.from(document.querySelectorAll('.img-fluid'));
+      const modal = document.getElementById('imgModalNew');
+      const modalImg = document.getElementById('modalImgNew');
+      const closeBtn = document.getElementById('closeModalNew');
+
+      function openModal(src) {
+        modalImg.src = src;
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        modalImg.classList.remove('zoomed');
+      }
+      function closeModal() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+        setTimeout(() => { modalImg.src = ''; modalImg.classList.remove('zoomed'); }, 350);
+      }
+
+      galleryImgs.forEach(img => {
+        img.addEventListener('click', function (e) {
+          e.preventDefault();
+          openModal(img.src);
+        });
+      });
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (modal.classList.contains('open')) {
+          if (e.key === 'Escape') closeModal();
+        }
+      });
+      // ZOOM funkcja: kliknięcie w zdjęcie powiększa/zmniejsza
+      modalImg.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (!modalImg.classList.contains('zoomed')) {
+          modalImg.classList.add('zoomed');
+        } else {
+          modalImg.classList.remove('zoomed');
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>
